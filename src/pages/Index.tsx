@@ -1,13 +1,29 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { LanguageProvider } from '@/contexts/LanguageContext';
+import { Header } from '@/components/Header';
+import { Hero } from '@/components/Hero';
+import { Categories } from '@/components/Categories';
+import { ToursSection } from '@/components/ToursSection';
+import { TransportSection } from '@/components/TransportSection';
+import { Testimonials } from '@/components/Testimonials';
+import { FAQSection } from '@/components/FAQSection';
+import { Footer } from '@/components/Footer';
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
+    <LanguageProvider>
+      <div className="min-h-screen bg-background">
+        <Header />
+        <main>
+          <Hero />
+          <Categories />
+          <ToursSection />
+          <TransportSection />
+          <Testimonials />
+          <FAQSection />
+        </main>
+        <Footer />
       </div>
-    </div>
+    </LanguageProvider>
   );
 };
 
