@@ -31,21 +31,18 @@ export function Header() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-background/95 backdrop-blur-md shadow-card py-3'
-          : 'bg-transparent py-4'
+          ? 'bg-background/95 backdrop-blur-md shadow-card py-0'
+          : 'bg-transparent py-0'
       }`}
     >
       <div className="container flex items-center justify-between">
         {/* Logo */}
-        <a href="#" className="flex items-center gap-2">
-          <span className="text-2xl">🌴</span>
-          <span
-            className={`text-xl font-bold transition-colors ${
-              isScrolled ? 'text-foreground' : 'text-primary-foreground'
-            }`}
-          >
-            Aventura Cartagena
-          </span>
+        <a href="#" className="flex items-center">
+          <img
+            src="/images/Aventuras-removebg-preview.png"
+            alt="Aventura Cartagena"
+            className="h-24 w-auto -my-4"
+          />
         </a>
 
         {/* Desktop Navigation */}

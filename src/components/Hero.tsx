@@ -6,7 +6,7 @@ export function Hero() {
   const { t } = useLanguage();
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden border-0">
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -17,7 +17,7 @@ export function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 container text-center px-4 pt-20">
+      <div className="relative z-10 container text-center px-4 -mt-20">
         <div className="max-w-3xl mx-auto animate-fade-in-up">
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-foreground/20 backdrop-blur-sm text-primary-foreground text-sm font-medium mb-6">
@@ -45,11 +45,12 @@ export function Hero() {
           </a>
         </div>
 
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-primary-foreground/80 animate-float">
-          <span className="text-sm font-medium">{t('hero.scroll')}</span>
-          <ChevronDown className="w-6 h-6" />
-        </div>
+      </div>
+
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-24 left-0 right-0 flex flex-col items-center gap-2 text-primary-foreground/80 animate-float z-10">
+        <span className="text-sm font-medium">{t('hero.scroll')}</span>
+        <ChevronDown className="w-6 h-6" />
       </div>
 
       {/* Decorative Wave */}
