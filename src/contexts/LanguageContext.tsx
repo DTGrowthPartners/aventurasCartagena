@@ -53,7 +53,7 @@ const translations: Translations = {
   
   // Testimonials
   'testimonials.title': { es: 'Lo que dicen nuestros viajeros', en: 'What our travelers say' },
-  'testimonials.subtitle': { es: 'Más de 1000 reseñas positivas', en: 'Over 1000 positive reviews' },
+  'testimonials.subtitle': { es: 'Más de 100 reseñas positivas', en: 'Over 100 positive reviews' },
   
   // FAQ
   'faq.title': { es: 'Preguntas Frecuentes', en: 'Frequently Asked Questions' },

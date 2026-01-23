@@ -1,7 +1,7 @@
 import { useLanguage } from '@/contexts/LanguageContext';
 import { TourCard } from '@/components/TourCard';
 import { toursData } from '@/data/tours';
-import { Palmtree, Landmark, Ship, MapPin } from 'lucide-react';
+import { Palmtree, Landmark, Ship, MapPin, Anchor, Moon, Compass } from 'lucide-react';
 
 const sections = [
   {
@@ -9,7 +9,35 @@ const sections = [
     icon: Palmtree,
     titleKey: 'Islas del Rosario',
     titleKeyEn: 'Rosario Islands',
-    filter: ['islands', 'baru'],
+    filter: ['islands'],
+  },
+  {
+    id: 'baru',
+    icon: Palmtree,
+    titleKey: 'Península de Barú',
+    titleKeyEn: 'Barú Peninsula',
+    filter: ['baru'],
+  },
+  {
+    id: 'sanbernardo',
+    icon: Ship,
+    titleKey: 'Archipiélago de San Bernardo',
+    titleKeyEn: 'San Bernardo Archipelago',
+    filter: ['sanbernardo'],
+  },
+  {
+    id: 'yates',
+    icon: Anchor,
+    titleKey: 'Yates',
+    titleKeyEn: 'Yachts',
+    filter: ['yachts'],
+  },
+  {
+    id: 'tournocturno',
+    icon: Moon,
+    titleKey: 'Tour Nocturno',
+    titleKeyEn: 'Night Tour',
+    filter: ['nighttour'],
   },
   {
     id: 'cultura',
@@ -26,11 +54,18 @@ const sections = [
     filter: ['sunset'],
   },
   {
-    id: 'aventuras',
+    id: 'tierrabomba',
     icon: MapPin,
-    titleKey: 'Aventuras',
-    titleKeyEn: 'Adventures',
-    filter: ['outside', 'sanbernardo'],
+    titleKey: 'Tierra Bomba',
+    titleKeyEn: 'Tierra Bomba',
+    filter: ['tierrabomba'],
+  },
+  {
+    id: 'santamarta',
+    icon: Compass,
+    titleKey: 'Santa Marta - Barranquilla',
+    titleKeyEn: 'Santa Marta - Barranquilla',
+    filter: ['santamarta'],
   },
 ];
 
