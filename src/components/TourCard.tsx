@@ -21,7 +21,7 @@ export interface Tour {
   priceCOP: number;
   includes: string[];
   includesEn: string[];
-  category: 'islands' | 'tierrabomba' | 'sanbernardo' | 'city' | 'sunset' | 'outside' | 'yachts' | 'nighttour' | 'sportboats';
+  category: 'islands' | 'tierrabomba' | 'sanbernardo' | 'city' | 'sunset' | 'outside' | 'yachts' | 'nighttour' | 'sportboats' | 'santamarta';
   whatsappMessage: string;
 }
 
@@ -54,7 +54,7 @@ export function TourCard({ tour }: TourCardProps) {
   return (
     <>
       <div
-        className="group flex flex-col bg-card rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 border border-border/50 cursor-pointer sm:cursor-default"
+        className="group flex flex-col h-full bg-card rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 border border-border/50 cursor-pointer sm:cursor-default"
         onClick={() => {
           // Only open modal on mobile (when clicking the card)
           if (window.innerWidth < 640) {

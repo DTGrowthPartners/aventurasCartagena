@@ -34,6 +34,14 @@ const categories = [
     color: 'bg-orange-500',
     href: '#atardeceres',
   },
+  {
+    id: 'santamarta',
+    icon: MapPin,
+    title: { es: 'Santa Marta', en: 'Santa Marta' },
+    desc: { es: 'Ciudad colonial y Tayrona', en: 'Colonial city and Tayrona' },
+    color: 'bg-purple-500',
+    href: '#santamarta',
+  },
 ];
 
 export function Categories() {

@@ -117,7 +117,7 @@ export function ToursSection() {
                 >
                   <CarouselContent className="-ml-2">
                     {tours.map((tour) => (
-                      <CarouselItem key={tour.id} className="pl-2 basis-[85%]">
+                      <CarouselItem key={tour.id} className="pl-2 basis-[85%] h-full">
                         <TourCard tour={tour} />
                       </CarouselItem>
                     ))}
@@ -136,7 +136,7 @@ export function ToursSection() {
                 >
                   <CarouselContent className="-ml-2">
                     {tours.map((tour) => (
-                      <CarouselItem key={tour.id} className="pl-2 basis-1/2 lg:basis-1/3 xl:basis-1/4">
+                      <CarouselItem key={tour.id} className="pl-2 basis-1/2 lg:basis-1/3 xl:basis-1/4 h-full">
                         <TourCard tour={tour} />
                       </CarouselItem>
                     ))}
