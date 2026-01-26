@@ -21,7 +21,7 @@ export interface Tour {
   priceCOP: number;
   includes: string[];
   includesEn: string[];
-  category: 'islands' | 'baru' | 'tierrabomba' | 'sanbernardo' | 'city' | 'sunset' | 'outside' | 'yachts' | 'nighttour' | 'santamarta';
+  category: 'islands' | 'tierrabomba' | 'sanbernardo' | 'city' | 'sunset' | 'outside' | 'yachts' | 'nighttour' | 'sportboats';
   whatsappMessage: string;
 }
 
@@ -53,9 +53,17 @@ export function TourCard({ tour }: TourCardProps) {
 
   return (
     <>
-      <div className="group flex flex-col bg-card rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 border border-border/50">
+      <div
+        className="group flex flex-col bg-card rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 border border-border/50 cursor-pointer sm:cursor-default"
+        onClick={() => {
+          // Only open modal on mobile (when clicking the card)
+          if (window.innerWidth < 640) {
+            setIsModalOpen(true);
+          }
+        }}
+      >
         {/* Image */}
-        <div className="relative h-48 md:h-56 overflow-hidden">
+        <div className="relative h-40 sm:h-48 md:h-56 overflow-hidden">
           <img
             src={tour.image}
             alt={name}
@@ -65,39 +73,50 @@ export function TourCard({ tour }: TourCardProps) {
 
           {/* Price Badge */}
           {!isYacht && (
-            <div className="absolute bottom-4 left-4 flex flex-col">
-              <span className="text-xs text-primary-foreground/80">{t('from')}</span>
-              <span className="text-2xl font-bold text-primary-foreground">
-                ${tour.priceUSD} <span className="text-sm font-normal">USD</span>
+            <div className="absolute bottom-3 left-3 sm:bottom-4 sm:left-4 flex flex-col">
+              <span className="text-[10px] sm:text-xs text-primary-foreground/80">{t('from')}</span>
+              <span className="text-xl sm:text-2xl font-bold text-primary-foreground">
+                {formatCOP(tour.priceCOP)}
               </span>
-              <span className="text-xs text-primary-foreground/80">
-                ~{formatCOP(tour.priceCOP)}
+              <span className="text-[10px] sm:text-xs text-primary-foreground/80">
+                Aprox ${tour.priceUSD} USD
               </span>
             </div>
           )}
         </div>
 
         {/* Content */}
-        <div className="flex flex-col flex-1 p-5">
+        <div className="flex flex-col flex-1 p-3 sm:p-5">
           {/* Title */}
-          <h3 className="text-lg font-bold text-foreground mb-2 line-clamp-1">
+          <h3 className="text-base sm:text-lg font-bold text-foreground mb-1 sm:mb-2 line-clamp-1">
             {name}
           </h3>
 
           {/* Duration */}
-          <div className="flex items-center gap-2 text-sm text-muted-foreground mb-3">
-            <Clock className="w-4 h-4" />
+          <div className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-muted-foreground mb-2 sm:mb-3">
+            <Clock className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             <span>{duration}</span>
           </div>
 
-          {/* Description */}
-          <div className="mb-4 flex-1">
+          {/* Mobile: Tap hint */}
+          <div className="sm:hidden mb-3 flex-1">
+            <p className="text-xs text-palm font-medium flex items-center gap-1">
+              {language === 'es' ? 'Toca para ver detalles' : 'Tap for details'}
+              <ChevronRight className="w-3 h-3" />
+            </p>
+          </div>
+
+          {/* Desktop: Description */}
+          <div className="hidden sm:block mb-4 flex-1">
             <p className="text-sm text-muted-foreground whitespace-pre-line line-clamp-2">
               {description}
             </p>
             {isLongDescription && (
               <button
-                onClick={() => setIsModalOpen(true)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setIsModalOpen(true);
+                }}
                 className="flex items-center gap-1 text-xs text-palm hover:text-palm/80 font-medium mt-1 transition-colors"
               >
                 {language === 'es' ? 'Ver más' : 'See more'}
@@ -106,8 +125,8 @@ export function TourCard({ tour }: TourCardProps) {
             )}
           </div>
 
-          {/* Includes */}
-          <div className="mb-4">
+          {/* Desktop: Includes */}
+          <div className="hidden sm:block mb-4">
             <span className="text-xs font-semibold text-foreground uppercase tracking-wide mb-2 block">
               {t('tours.includes')}:
             </span>
@@ -124,14 +143,15 @@ export function TourCard({ tour }: TourCardProps) {
             </div>
           </div>
 
-          {/* WhatsApp Button */}
+          {/* WhatsApp Button - Hidden on mobile, shown on desktop */}
           <a
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2 w-full py-3 bg-palm hover:bg-palm/90 text-primary-foreground font-semibold rounded-xl transition-all duration-300 hover:scale-[1.02]"
+            onClick={(e) => e.stopPropagation()}
+            className="hidden sm:flex items-center justify-center gap-2 w-full py-3 bg-palm hover:bg-palm/90 text-primary-foreground font-semibold rounded-xl transition-all duration-300 hover:scale-[1.02]"
           >
-            <MessageCircle className="w-5 h-5" />
+            <i className="fi fi-brands-whatsapp w-5 h-5"></i>
             {t('tours.book')}
           </a>
         </div>
@@ -155,10 +175,10 @@ export function TourCard({ tour }: TourCardProps) {
             {!isYacht && (
               <div className="absolute bottom-4 left-4 flex flex-col">
                 <span className="text-2xl font-bold text-primary-foreground">
-                  ${tour.priceUSD} <span className="text-sm font-normal">USD</span>
+                  {formatCOP(tour.priceCOP)}
                 </span>
                 <span className="text-sm text-primary-foreground/80">
-                  ~{formatCOP(tour.priceCOP)}
+                  Aprox ${tour.priceUSD} USD
                 </span>
               </div>
             )}

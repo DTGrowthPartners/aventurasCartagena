@@ -100,29 +100,9 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Group Chats + Trust Badges */}
+          {/* Trust Badges */}
           <div>
-            <h4 className="text-lg font-bold mb-4">Chats Grupales</h4>
-            <div className="flex items-center gap-4 mb-4">
-              <a
-                href="https://chat.whatsapp.com/IEVUxS1TYyeFeWOQYJIFiC"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-12 h-12 rounded-xl bg-primary-foreground/10 hover:bg-primary-foreground/20 flex items-center justify-center transition-colors"
-              >
-                <WhatsAppIcon className="w-6 h-6" />
-              </a>
-              <a
-                href="https://www.facebook.com/share/g/17iK1g7Dvv/?mibextid=wwXIfr"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-12 h-12 rounded-xl bg-primary-foreground/10 hover:bg-primary-foreground/20 flex items-center justify-center transition-colors"
-              >
-                <Facebook className="w-6 h-6" />
-              </a>
-            </div>
-            {/* Trust Badges */}
-            <p className="text-sm text-primary-foreground/60 mb-2">Vigilado por</p>
+            <h4 className="text-lg font-bold mb-4">Vigilado por</h4>
             <div className="flex items-center gap-4">
               <img
                 src="/images/CCC.png"

@@ -2,6 +2,13 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { TourCard } from '@/components/TourCard';
 import { toursData } from '@/data/tours';
 import { Palmtree, Landmark, Ship, MapPin, Anchor, Moon, Compass } from 'lucide-react';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from '@/components/ui/carousel';
 
 const sections = [
   {
@@ -28,9 +35,9 @@ const sections = [
   {
     id: 'yates',
     icon: Anchor,
-    titleKey: 'Yates',
-    titleKeyEn: 'Yachts',
-    filter: ['yachts'],
+    titleKey: 'Yates y Botes',
+    titleKeyEn: 'Yachts and Boats',
+    filter: ['yachts', 'sportboats'],
   },
   {
     id: 'tournocturno',
@@ -59,13 +66,6 @@ const sections = [
     titleKey: 'Tierra Bomba',
     titleKeyEn: 'Tierra Bomba',
     filter: ['tierrabomba'],
-  },
-  {
-    id: 'santamarta',
-    icon: Compass,
-    titleKey: 'Santa Marta - Barranquilla',
-    titleKeyEn: 'Santa Marta - Barranquilla',
-    filter: ['santamarta'],
   },
 ];
 
@@ -106,11 +106,44 @@ export function ToursSection() {
                 </h3>
               </div>
 
-              {/* Tours Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                {tours.map((tour) => (
-                  <TourCard key={tour.id} tour={tour} />
-                ))}
+              {/* Mobile Carousel */}
+              <div className="md:hidden">
+                <Carousel
+                  opts={{
+                    align: 'start',
+                    loop: false,
+                  }}
+                  className="w-full"
+                >
+                  <CarouselContent className="-ml-2">
+                    {tours.map((tour) => (
+                      <CarouselItem key={tour.id} className="pl-2 basis-[85%]">
+                        <TourCard tour={tour} />
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                </Carousel>
+              </div>
+
+              {/* Desktop Horizontal Scroll */}
+              <div className="hidden md:block">
+                <Carousel
+                  opts={{
+                    align: 'start',
+                    loop: false,
+                  }}
+                  className="w-full"
+                >
+                  <CarouselContent className="-ml-2">
+                    {tours.map((tour) => (
+                      <CarouselItem key={tour.id} className="pl-2 basis-1/2 lg:basis-1/3 xl:basis-1/4">
+                        <TourCard tour={tour} />
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                  <CarouselPrevious />
+                  <CarouselNext />
+                </Carousel>
               </div>
             </div>
           );

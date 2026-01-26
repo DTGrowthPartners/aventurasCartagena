@@ -1,6 +1,5 @@
 import { useLanguage } from '@/contexts/LanguageContext';
 import { ChevronDown } from 'lucide-react';
-import heroImage from '@/assets/hero-cartagena.jpg';
 
 export function Hero() {
   const { t } = useLanguage();
@@ -10,7 +9,7 @@ export function Hero() {
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroImage})` }}
+        style={{ backgroundImage: `url('/images/ChatGPT Image 20 ene 2026, 05_10_48 p.m..png')` }}
       >
         {/* Overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-navy/40 via-navy/30 to-navy/70" />
