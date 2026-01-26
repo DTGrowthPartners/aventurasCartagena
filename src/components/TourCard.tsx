@@ -125,23 +125,6 @@ export function TourCard({ tour }: TourCardProps) {
             )}
           </div>
 
-          {/* Desktop: Includes */}
-          <div className="hidden sm:block mb-4">
-            <span className="text-xs font-semibold text-foreground uppercase tracking-wide mb-2 block">
-              {t('tours.includes')}:
-            </span>
-            <div className="flex flex-wrap gap-2">
-              {includes.slice(0, 3).map((item, index) => (
-                <span
-                  key={index}
-                  className="inline-flex items-center gap-1 text-xs bg-muted text-muted-foreground px-2 py-1 rounded-full"
-                >
-                  <Check className="w-3 h-3 text-palm" />
-                  {item}
-                </span>
-              ))}
-            </div>
-          </div>
 
           {/* WhatsApp Button - Hidden on mobile, shown on desktop */}
           <a
