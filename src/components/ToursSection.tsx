@@ -67,6 +67,13 @@ const sections = [
     titleKeyEn: 'Tierra Bomba',
     filter: ['tierrabomba'],
   },
+  {
+    id: 'santamarta',
+    icon: MapPin,
+    titleKey: 'Santa Marta',
+    titleKeyEn: 'Santa Marta',
+    filter: ['santamarta'],
+  },
 ];
 
 export function ToursSection() {
