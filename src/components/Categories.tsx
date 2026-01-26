@@ -1,5 +1,5 @@
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Palmtree, Ship, Anchor, Moon, Compass } from 'lucide-react';
+import { Palmtree, Ship, Anchor, Moon, Compass, MapPin } from 'lucide-react';
 
 const categories = [
   {
