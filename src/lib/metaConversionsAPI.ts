@@ -146,28 +146,18 @@ export async function sendConversionEvent(
       data: [eventData],
     };
 
-    // En desarrollo, solo logueamos el evento
-    // En producción, debes enviar esto a tu backend
-    if (import.meta.env.DEV) {
-      console.log('📊 Meta CAPI Event (DEV MODE):', payload);
-      return true;
-    }
+    // Por ahora solo logueamos - la Conversions API server-side
+    // se habilitará cuando configures Vercel con las env vars
+    console.log('📊 Meta CAPI Event:', eventName, payload);
 
-    // Para producción: enviar a tu backend/serverless function
-    // Ejemplo con un endpoint de tu API:
-    const response = await fetch('/api/meta-conversion', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(payload),
-    });
+    // TODO: Descomentar cuando Vercel esté configurado con META_ACCESS_TOKEN
+    // const response = await fetch('/api/meta-conversion', {
+    //   method: 'POST',
+    //   headers: { 'Content-Type': 'application/json' },
+    //   body: JSON.stringify(payload),
+    // });
+    // if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-
-    console.log('📊 Meta CAPI Event sent:', eventName);
     return true;
   } catch (error) {
     console.error('❌ Error sending Meta CAPI event:', error);
