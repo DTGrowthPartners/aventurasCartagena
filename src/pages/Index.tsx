@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { LanguageProvider } from '@/contexts/LanguageContext';
 import { Header } from '@/components/Header';
 import { Hero } from '@/components/Hero';
@@ -9,8 +10,14 @@ import { Testimonials } from '@/components/Testimonials';
 import { FAQSection } from '@/components/FAQSection';
 import { Footer } from '@/components/Footer';
 import { Construction } from 'lucide-react';
+import { trackPageView } from '@/lib/metaConversionsAPI';
 
 const Index = () => {
+  // Track PageView on mount
+  useEffect(() => {
+    trackPageView();
+  }, []);
+
   return (
     <LanguageProvider>
       <div className="min-h-screen bg-background">

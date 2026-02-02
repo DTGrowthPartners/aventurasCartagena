@@ -1,5 +1,6 @@
 import { useLanguage } from '@/contexts/LanguageContext';
 import { MessageCircle, Instagram, Facebook, Mail, Phone } from 'lucide-react';
+import { trackContact, trackLead } from '@/lib/metaConversionsAPI';
 
 // TikTok icon component
 const TikTokIcon = ({ className = "w-6 h-6" }: { className?: string }) => (
@@ -41,6 +42,10 @@ export function Footer() {
               href="https://wa.me/573042455362?text=Hola!%20Quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20tours."
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => {
+                trackContact();
+                trackLead('Contacto Footer');
+              }}
               className="inline-flex items-center gap-2 px-5 py-3 bg-palm hover:bg-palm/90 text-primary-foreground font-semibold rounded-xl transition-colors"
             >
               <MessageCircle className="w-5 h-5" />
@@ -54,6 +59,7 @@ export function Footer() {
             <div className="space-y-3">
               <a
                 href="tel:+573042455362"
+                onClick={() => trackContact()}
                 className="flex items-center gap-3 text-primary-foreground/80 hover:text-primary-foreground transition-colors"
               >
                 <Phone className="w-5 h-5" />
@@ -61,6 +67,7 @@ export function Footer() {
               </a>
               <a
                 href="mailto:info@aventuracartagena.com"
+                onClick={() => trackContact()}
                 className="flex items-center gap-3 text-primary-foreground/80 hover:text-primary-foreground transition-colors"
               >
                 <Mail className="w-5 h-5" />

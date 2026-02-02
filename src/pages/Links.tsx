@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Facebook, Instagram, X, ChevronLeft, ChevronRight, Globe, Star } from 'lucide-react';
+import { trackPageView, trackContact, trackLead } from '@/lib/metaConversionsAPI';
 
 // WhatsApp official logo SVG component
 const WhatsAppIcon = ({ className = "w-6 h-6", style }: { className?: string; style?: React.CSSProperties }) => (
@@ -107,6 +108,11 @@ export default function Links() {
 
   const t = translations[language];
 
+  // Track PageView on mount
+  useEffect(() => {
+    trackPageView();
+  }, []);
+
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (modalOpen) {
@@ -156,6 +162,10 @@ export default function Links() {
   };
 
   const handleWhatsApp = (message: string) => {
+    // Track contact and lead
+    trackContact();
+    trackLead(message);
+
     const encoded = encodeURIComponent(`Hola! Vengo de la página de links y estoy interesado en *${message}*`);
     window.open(`https://api.whatsapp.com/send/?phone=573042455362&text=${encoded}`, '_blank');
   };
@@ -503,6 +513,10 @@ export default function Links() {
             href="https://api.whatsapp.com/send/?phone=573042455362&text=Hola!%20Vengo%20de%20la%20p%C3%A1gina%20de%20links%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n."
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => {
+              trackContact();
+              trackLead('Links Page - General');
+            }}
             className="flex items-center justify-center gap-3 px-6 py-4 rounded-2xl bg-[#25d366]/90 backdrop-blur-sm text-white font-semibold shadow-lg hover:shadow-xl hover:scale-[1.02] hover:bg-[#25d366] transition-all duration-300"
           >
             <WhatsAppIcon className="w-6 h-6" />

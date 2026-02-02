@@ -7,6 +7,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog';
+import { trackViewContent, trackInitiateCheckout, trackLead } from '@/lib/metaConversionsAPI';
 
 export interface Tour {
   id: string;
@@ -59,6 +60,8 @@ export function TourCard({ tour }: TourCardProps) {
           // Only open modal on mobile (when clicking the card)
           if (window.innerWidth < 640) {
             setIsModalOpen(true);
+            // Track ViewContent when opening modal
+            trackViewContent(name, tour.id, tour.priceCOP, 'COP');
           }
         }}
       >
@@ -131,7 +134,11 @@ export function TourCard({ tour }: TourCardProps) {
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            onClick={(e) => e.stopPropagation()}
+            onClick={(e) => {
+              e.stopPropagation();
+              trackInitiateCheckout(name, tour.id, tour.priceCOP, 'COP');
+              trackLead(name, tour.priceCOP, 'COP');
+            }}
             className="hidden sm:flex items-center justify-center gap-2 w-full py-3 bg-palm hover:bg-palm/90 text-primary-foreground font-semibold rounded-xl transition-all duration-300 hover:scale-[1.02]"
           >
             <i className="fi fi-brands-whatsapp w-5 h-5"></i>
@@ -206,6 +213,10 @@ export function TourCard({ tour }: TourCardProps) {
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => {
+              trackInitiateCheckout(name, tour.id, tour.priceCOP, 'COP');
+              trackLead(name, tour.priceCOP, 'COP');
+            }}
             className="flex items-center justify-center gap-2 w-full py-3 bg-palm hover:bg-palm/90 text-primary-foreground font-semibold rounded-xl transition-all duration-300 hover:scale-[1.02] mt-2"
           >
             <MessageCircle className="w-5 h-5" />
