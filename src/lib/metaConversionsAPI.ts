@@ -260,10 +260,14 @@ export function trackLead(tourName?: string, value?: number, currency = 'COP') {
  * Track Contact - cuando hacen clic en el botón de contacto
  */
 export function trackContact() {
+  console.log('🔔 trackContact() llamado');
   sendConversionEvent('Contact');
 
   if (typeof window !== 'undefined' && (window as any).fbq) {
+    console.log('📤 Disparando fbq Contact...');
     (window as any).fbq('track', 'Contact');
+  } else {
+    console.warn('⚠️ fbq no está disponible');
   }
 }
 
