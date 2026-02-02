@@ -181,14 +181,12 @@ export async function sendConversionEvent(
 
 /**
  * Track PageView event
+ * Nota: El pixel en index.html ya dispara PageView automáticamente
+ * Esta función solo envía a la Conversions API (server-side)
  */
 export function trackPageView() {
   sendConversionEvent('PageView');
-
-  // También disparar el pixel del navegador
-  if (typeof window !== 'undefined' && (window as any).fbq) {
-    (window as any).fbq('track', 'PageView');
-  }
+  // El fbq('track', 'PageView') ya se dispara en index.html
 }
 
 /**
