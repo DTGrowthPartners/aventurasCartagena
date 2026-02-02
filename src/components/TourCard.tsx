@@ -7,7 +7,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog';
-import { trackViewContent, trackInitiateCheckout, trackLead } from '@/lib/metaConversionsAPI';
+import { trackViewContent, trackContact } from '@/lib/metaConversionsAPI';
 
 export interface Tour {
   id: string;
@@ -136,8 +136,7 @@ export function TourCard({ tour }: TourCardProps) {
             rel="noopener noreferrer"
             onClick={(e) => {
               e.stopPropagation();
-              trackInitiateCheckout(name, tour.id, tour.priceCOP, 'COP');
-              trackLead(name, tour.priceCOP, 'COP');
+              trackContact();
             }}
             className="hidden sm:flex items-center justify-center gap-2 w-full py-3 bg-palm hover:bg-palm/90 text-primary-foreground font-semibold rounded-xl transition-all duration-300 hover:scale-[1.02]"
           >
@@ -214,8 +213,7 @@ export function TourCard({ tour }: TourCardProps) {
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => {
-              trackInitiateCheckout(name, tour.id, tour.priceCOP, 'COP');
-              trackLead(name, tour.priceCOP, 'COP');
+              trackContact();
             }}
             className="flex items-center justify-center gap-2 w-full py-3 bg-palm hover:bg-palm/90 text-primary-foreground font-semibold rounded-xl transition-all duration-300 hover:scale-[1.02] mt-2"
           >

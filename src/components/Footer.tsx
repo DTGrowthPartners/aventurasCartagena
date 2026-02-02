@@ -1,6 +1,6 @@
 import { useLanguage } from '@/contexts/LanguageContext';
 import { MessageCircle, Instagram, Facebook, Mail, Phone } from 'lucide-react';
-import { trackContact, trackLead } from '@/lib/metaConversionsAPI';
+import { trackContact } from '@/lib/metaConversionsAPI';
 
 // TikTok icon component
 const TikTokIcon = ({ className = "w-6 h-6" }: { className?: string }) => (
@@ -44,7 +44,6 @@ export function Footer() {
               rel="noopener noreferrer"
               onClick={() => {
                 trackContact();
-                trackLead('Contacto Footer');
               }}
               className="inline-flex items-center gap-2 px-5 py-3 bg-palm hover:bg-palm/90 text-primary-foreground font-semibold rounded-xl transition-colors"
             >
