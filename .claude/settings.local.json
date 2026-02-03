@@ -2,6 +2,9 @@
   "permissions": {
     "allow": [
       "Bash(npm install:*)"
+    ],
+    "additionalDirectories": [
+      "C:\\Users\\Edgar\\OneDrive\\Documentos\\aventurasCartagena\\src\\assets\\Imagenes tour"
     ]
   }
 }
