@@ -11,14 +11,6 @@ const categories = [
     href: '#islas',
   },
   {
-    id: 'yachts',
-    icon: Anchor,
-    title: { es: 'Yates', en: 'Yachts' },
-    desc: { es: 'Lujo en el mar', en: 'Luxury at sea' },
-    color: 'bg-coral',
-    href: '#yates',
-  },
-  {
     id: 'nighttour',
     icon: Moon,
     title: { es: 'Tour Nocturno', en: 'Night Tour' },

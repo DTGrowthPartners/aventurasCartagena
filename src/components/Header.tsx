@@ -18,7 +18,6 @@ export function Header() {
   const navLinks = [
     { href: '#experiencias', label: t('nav.experiences') },
     { href: '#islas', label: t('nav.islands') },
-    { href: '#cultura', label: t('nav.culture') },
     { href: '#testimonios', label: t('nav.testimonials') },
     { href: '#faq', label: t('nav.faq') },
   ];
