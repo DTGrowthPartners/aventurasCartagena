@@ -120,6 +120,11 @@ export function Footer() {
                 alt="Superintendencia de Industria y Comercio"
                 className="h-16 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity"
               />
+              <img
+                src="/images/logo_rnt.png"
+                alt="Registro Nacional de Turismo"
+                className="h-16 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity"
+              />
             </div>
           </div>
         </div>

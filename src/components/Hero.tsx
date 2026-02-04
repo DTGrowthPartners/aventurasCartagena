@@ -9,7 +9,7 @@ export function Hero() {
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url('/images/ChatGPT Image 20 ene 2026, 05_10_48 p.m..png')` }}
+        style={{ backgroundImage: `url('/images/ChatGPT Image 20 ene 2026, 05_10_48 p.webp')` }}
       >
         {/* Overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-navy/40 via-navy/30 to-navy/70" />
