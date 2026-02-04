@@ -33,11 +33,18 @@ const sections = [
     filter: ['sanbernardo'],
   },
   {
-    id: 'yates',
-    icon: Anchor,
-    titleKey: 'Yates y Botes',
-    titleKeyEn: 'Yachts and Boats',
-    filter: ['yachts', 'sportboats'],
+    id: 'barubeach',
+    icon: Palmtree,
+    titleKey: 'Playas de Barú',
+    titleKeyEn: 'Barú Beaches',
+    filter: ['barubeach'],
+  },
+  {
+    id: 'fullday',
+    icon: Compass,
+    titleKey: 'Full Day Islas',
+    titleKeyEn: 'Full Day Islands',
+    filter: ['fullday'],
   },
   {
     id: 'tournocturno',

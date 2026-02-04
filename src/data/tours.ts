@@ -388,7 +388,7 @@ export const toursData: Tour[] = [
     priceCOP: 90000,
     includes: ['Bus Chiva', 'Guía Historiador', 'Castillo Grande', 'Letras de Cartagena', 'Zapatos viejos', 'Torre del Reloj', 'Castillo San Felipe con entrada', 'Recorrido panorámico', 'Centro histórico'],
     includesEn: ['Chiva Bus', 'Historian Guide', 'Castillo Grande', 'Cartagena letters', 'Old shoes', 'Clock Tower', 'San Felipe Castle with entrance', 'Panoramic tour', 'Historic center'],
-    category: 'citytour',
+    category: 'city',
     whatsappMessage: 'Hola! Estoy interesado en CITY TOUR CULTURAL. ¿Tienen disponibilidad?',
   },
   {
@@ -404,7 +404,7 @@ export const toursData: Tour[] = [
     priceCOP: 280000,
     includes: ['Transporte climatizado', 'Guía', 'Seguro', 'Almuerzo típico', 'Casa del carnaval', 'Múltiples paradas', 'Atardecer en rooftop'],
     includesEn: ['Air-conditioned transport', 'Guide', 'Insurance', 'Typical lunch', 'Carnival house', 'Multiple stops', 'Rooftop sunset'],
-    category: 'citytour',
+    category: 'city',
     whatsappMessage: 'Hola! Estoy interesado en BARRANQUILLA CARNAVALERA. ¿Tienen disponibilidad?',
   },
   {
@@ -420,7 +420,7 @@ export const toursData: Tour[] = [
     priceCOP: 120000,
     includes: ['Transporte privado', 'Chófer', 'Castillo Grande', 'Letras', 'Zapatos viejos', 'Convento de la Popa', 'Castillo San Felipe', 'Getsemaní', 'Centro histórico'],
     includesEn: ['Private transport', 'Driver', 'Castillo Grande', 'Letters', 'Old shoes', 'La Popa convent', 'San Felipe Castle', 'Getsemaní', 'Historic center'],
-    category: 'citytour',
+    category: 'city',
     whatsappMessage: 'Hola! Estoy interesado en CITY TOUR PRIVADO. ¿Tienen disponibilidad?',
   },
   {
@@ -436,7 +436,7 @@ export const toursData: Tour[] = [
     priceCOP: 160000,
     includes: ['Transporte', 'Guía', 'Palenquera', 'Zapatos viejos', 'San Felipe', 'Pastelillo', 'La Popa', 'Letras', 'Getsemaní', 'Ciudad Amurallada', 'Las Bóvedas', 'Alimentación'],
     includesEn: ['Transport', 'Guide', 'Palenquera', 'Old shoes', 'San Felipe', 'Pastelillo', 'La Popa', 'Letters', 'Getsemaní', 'Walled City', 'Las Bóvedas', 'Meal'],
-    category: 'citytour',
+    category: 'city',
     whatsappMessage: 'Hola! Estoy interesado en CITY TOUR DE ROA. ¿Tienen disponibilidad?',
   },
   {
@@ -452,7 +452,7 @@ export const toursData: Tour[] = [
     priceCOP: 300000,
     includes: ['Guía Bilingüe', 'Desayuno', 'Almuerzo', 'Agua', 'Visitas Barranquilla', 'Visitas Santa Marta', 'Transporte'],
     includesEn: ['Bilingual Guide', 'Breakfast', 'Lunch', 'Water', 'Barranquilla visits', 'Santa Marta visits', 'Transport'],
-    category: 'citytour',
+    category: 'city',
     whatsappMessage: 'Hola! Estoy interesado en BARRANQUILLA Y SANTA MARTA. ¿Tienen disponibilidad?',
   },
   {
@@ -468,7 +468,7 @@ export const toursData: Tour[] = [
     priceCOP: 180000,
     includes: ['Bus climatizado', 'Guía', 'Volcán del Totumo con entrada', 'Club de playa', 'Piscina', 'Rooftop', 'Almuerzo Caribeño', 'Playa'],
     includesEn: ['Air-conditioned bus', 'Guide', 'Totumo Volcano with entrance', 'Beach Club', 'Pool', 'Rooftop', 'Caribbean lunch', 'Beach'],
-    category: 'citytour',
+    category: 'city',
     whatsappMessage: 'Hola! Estoy interesado en VOLCÁN DEL TOTUMO. ¿Tienen disponibilidad?',
   },
   // Atardeceres (3 tours)
