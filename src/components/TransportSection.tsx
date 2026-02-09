@@ -78,17 +78,6 @@ export function TransportSection() {
               </div>
             </Reveal>
 
-            {/* Video */}
-            <Reveal delay={0.3}>
-              <div className="mt-10 flex justify-center">
-                <video
-                  src="/images/VideoAventuras.mp4"
-                  controls
-                  className="w-full max-w-2xl rounded-2xl shadow-lg"
-                  preload="metadata"
-                />
-              </div>
-            </Reveal>
           </div>
         </div>
       </div>

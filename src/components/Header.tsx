@@ -41,7 +41,7 @@ export function Header() {
           <img
             src="/images/Aventuras-removebg-preview.png"
             alt="Aventura Cartagena"
-            className={`w-auto transition-all duration-500 ${isScrolled ? 'h-16 -my-1' : 'h-24 -my-4'}`}
+            className={`w-auto transition-all duration-500 ${isScrolled ? 'h-20 -my-2' : 'h-32 -my-6'}`}
           />
         </a>
 
