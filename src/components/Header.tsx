@@ -1,6 +1,7 @@
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Menu, X, Globe } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export function Header() {
   const { language, setLanguage, t } = useLanguage();
@@ -9,15 +10,15 @@ export function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      setIsScrolled(window.scrollY > 20);
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const navLinks = [
     { href: '#experiencias', label: t('nav.experiences') },
-    { href: '#islas', label: t('nav.islands') },
+    { href: '#tours', label: t('nav.islands') },
     { href: '#testimonios', label: t('nav.testimonials') },
     { href: '#faq', label: t('nav.faq') },
   ];
@@ -28,9 +29,9 @@ export function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? 'bg-background/95 backdrop-blur-md shadow-card py-0'
+          ? 'bg-background/90 backdrop-blur-xl shadow-lg py-0'
           : 'bg-transparent py-0'
       }`}
     >
@@ -40,7 +41,7 @@ export function Header() {
           <img
             src="/images/Aventuras-removebg-preview.png"
             alt="Aventura Cartagena"
-            className="h-24 w-auto -my-4"
+            className={`w-auto transition-all duration-500 ${isScrolled ? 'h-16 -my-1' : 'h-24 -my-4'}`}
           />
         </a>
 
@@ -50,7 +51,7 @@ export function Header() {
             <a
               key={link.href}
               href={link.href}
-              className={`text-sm font-medium transition-colors hover:text-primary ${
+              className={`text-sm font-medium transition-colors duration-300 hover:text-primary ${
                 isScrolled ? 'text-foreground' : 'text-primary-foreground/90'
               }`}
             >
@@ -63,7 +64,7 @@ export function Header() {
         <div className="flex items-center gap-3">
           <button
             onClick={toggleLanguage}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium transition-all ${
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium transition-all duration-300 ${
               isScrolled
                 ? 'bg-muted text-foreground hover:bg-primary hover:text-primary-foreground'
                 : 'bg-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/30'
@@ -88,22 +89,33 @@ export function Header() {
       </div>
 
       {/* Mobile Menu */}
-      {isMobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-background/98 backdrop-blur-lg shadow-lg border-t border-border animate-fade-in">
-          <nav className="container py-4 flex flex-col gap-2">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="py-3 px-4 text-foreground font-medium rounded-lg hover:bg-muted transition-colors"
-              >
-                {link.label}
-              </a>
-            ))}
-          </nav>
-        </div>
-      )}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            className="md:hidden absolute top-full left-0 right-0 bg-background/98 backdrop-blur-lg shadow-lg border-t border-border"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.2, ease: 'easeOut' }}
+          >
+            <nav className="container py-4 flex flex-col gap-2">
+              {navLinks.map((link, i) => (
+                <motion.a
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="py-3 px-4 text-foreground font-medium rounded-lg hover:bg-muted transition-colors"
+                  initial={{ opacity: 0, x: -12 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.05, duration: 0.25 }}
+                >
+                  {link.label}
+                </motion.a>
+              ))}
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

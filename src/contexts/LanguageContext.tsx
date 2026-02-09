@@ -19,6 +19,7 @@ const translations: Translations = {
   
   // Hero
   'hero.title': { es: 'Descubre Cartagena como nunca antes', en: 'Discover Cartagena like never before' },
+  'hero.titleRest': { es: 'Cartagena como nunca antes', en: 'Cartagena like never before' },
   'hero.subtitle': { es: 'Vive experiencias únicas en el Caribe colombiano. Playas paradisíacas, historia colonial y aventuras inolvidables te esperan.', en: 'Live unique experiences in the Colombian Caribbean. Paradise beaches, colonial history and unforgettable adventures await you.' },
   'hero.cta': { es: 'Explorar experiencias', en: 'Explore experiences' },
   'hero.scroll': { es: 'Desliza para descubrir', en: 'Scroll to discover' },

@@ -1,5 +1,5 @@
-import { useLanguage } from '@/contexts/LanguageContext';
-import { MessageCircle, Car, Plane, MapPin } from 'lucide-react';
+import { motion, useReducedMotion } from 'framer-motion';
+import { Reveal } from '@/components/ui/Reveal';
 
 // WhatsApp icon component
 const WhatsAppIcon = ({ className = "w-6 h-6" }: { className?: string }) => (
@@ -9,49 +9,88 @@ const WhatsAppIcon = ({ className = "w-6 h-6" }: { className?: string }) => (
 );
 
 export function TransportSection() {
-  const { t } = useLanguage();
+  const shouldReduceMotion = useReducedMotion();
 
   return (
-    <section className="py-16 md:py-24 bg-gradient-ocean text-primary-foreground relative">
-      <div className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20" style={{ backgroundImage: 'url(/images/cartagena.jpeg)' }}></div>
+    <section className="py-16 md:py-24 bg-gradient-ocean text-primary-foreground relative overflow-hidden">
+      <div className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20" style={{ backgroundImage: 'url(/images/cartagena.jpeg)' }} />
+
+      {/* Decorative blurred circles */}
+      {!shouldReduceMotion && (
+        <>
+          <motion.div
+            className="absolute -top-20 -left-20 w-64 h-64 rounded-full bg-white/5 blur-3xl"
+            animate={{ x: [0, 30, 0], y: [0, -20, 0] }}
+            transition={{ repeat: Infinity, duration: 8, ease: 'easeInOut' }}
+          />
+          <motion.div
+            className="absolute -bottom-20 -right-20 w-80 h-80 rounded-full bg-white/5 blur-3xl"
+            animate={{ x: [0, -25, 0], y: [0, 25, 0] }}
+            transition={{ repeat: Infinity, duration: 10, ease: 'easeInOut' }}
+          />
+        </>
+      )}
+
       <div className="relative z-10">
-      <div className="container">
-        <div className="max-w-4xl mx-auto text-center">
-          {/* Title */}
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
-            Únete a nuestros grupos
-          </h2>
+        <div className="container">
+          <div className="max-w-4xl mx-auto text-center">
+            {/* Title */}
+            <Reveal>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+                Únete a nuestros grupos
+              </h2>
+            </Reveal>
 
-          {/* Description */}
-          <p className="text-lg md:text-xl text-primary-foreground/90 mb-10 max-w-2xl mx-auto leading-relaxed">
-            Conecta con otros aventureros, comparte experiencias y mantente al día con las últimas ofertas y tours exclusivos.
-          </p>
+            {/* Description */}
+            <Reveal delay={0.1}>
+              <p className="text-lg md:text-xl text-primary-foreground/90 mb-10 max-w-2xl mx-auto leading-relaxed">
+                Conecta con otros aventureros, comparte experiencias y mantente al día con las últimas ofertas y tours exclusivos.
+              </p>
+            </Reveal>
 
-          {/* Group Links */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a
-              href="https://chat.whatsapp.com/IEVUxS1TYyeFeWOQYJIFiC"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-8 py-4 bg-green-600 hover:bg-green-700 text-white font-bold text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
-            >
-              <WhatsAppIcon className="w-6 h-6" />
-              Grupo WhatsApp
-            </a>
-            <a
-              href="https://www.facebook.com/share/g/17iK1g7Dvv/?mibextid=wwXIfr"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
-            >
-              <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
-                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-              </svg>
-              Grupo Facebook
-            </a>
+            {/* Group Links */}
+            <Reveal delay={0.2}>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <motion.a
+                  href="https://chat.whatsapp.com/IEVUxS1TYyeFeWOQYJIFiC"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3 px-8 py-4 bg-green-600 hover:bg-green-700 text-white font-bold text-lg rounded-full shadow-lg transition-colors duration-300"
+                  whileHover={shouldReduceMotion ? {} : { scale: 1.05 }}
+                  whileTap={shouldReduceMotion ? {} : { scale: 0.97 }}
+                >
+                  <WhatsAppIcon className="w-6 h-6" />
+                  Grupo WhatsApp
+                </motion.a>
+                <motion.a
+                  href="https://www.facebook.com/share/g/17iK1g7Dvv/?mibextid=wwXIfr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3 px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold text-lg rounded-full shadow-lg transition-colors duration-300"
+                  whileHover={shouldReduceMotion ? {} : { scale: 1.05 }}
+                  whileTap={shouldReduceMotion ? {} : { scale: 0.97 }}
+                >
+                  <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                  </svg>
+                  Grupo Facebook
+                </motion.a>
+              </div>
+            </Reveal>
+
+            {/* Video */}
+            <Reveal delay={0.3}>
+              <div className="mt-10 flex justify-center">
+                <video
+                  src="/images/VideoAventuras.mp4"
+                  controls
+                  className="w-full max-w-2xl rounded-2xl shadow-lg"
+                  preload="metadata"
+                />
+              </div>
+            </Reveal>
           </div>
         </div>
-      </div>
       </div>
     </section>
   );

@@ -43,7 +43,6 @@ const serviceImages = [
   '/images/Atardecer.jpg',    // Atardeceres
   '/images/Tour Nocturno.jpg', // Tour Nocturno
   '/images/Chiva.jpg',        // Chivas
-  '/images/Yate.jpg',         // Yates
 ];
 
 const reviews = [
@@ -80,7 +79,6 @@ const translations = {
       { title: 'Atardeceres', message: 'Atardeceres', desc: 'Vistas mágicas' },
       { title: 'Tour Nocturno', message: 'Tour Nocturno', desc: 'La ciudad de noche' },
       { title: 'Chivas', message: 'Servicio de Chivas', desc: 'Fiesta sobre ruedas' },
-      { title: 'Yates', message: 'Servicio de Yates', desc: 'Lujo en el mar' },
     ],
   },
   en: {
@@ -95,14 +93,19 @@ const translations = {
       { title: 'Sunsets', message: 'Sunsets', desc: 'Magical views' },
       { title: 'Night Tour', message: 'Night Tour', desc: 'City at night' },
       { title: 'Chivas', message: 'Chiva Party Bus', desc: 'Party on wheels' },
-      { title: 'Yachts', message: 'Yacht Service', desc: 'Luxury at sea' },
     ],
   },
 };
 
+const reviewVideos = [
+  '/images/AventuraVId.mp4',
+  '/images/VideoAventuras.mp4',
+];
+
 export default function Links() {
   const [modalOpen, setModalOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
   const [language, setLanguage] = useState<'es' | 'en'>('es');
   const [headerOpacity, setHeaderOpacity] = useState(1);
 
@@ -218,11 +221,13 @@ export default function Links() {
         className="relative z-10 w-full h-96 md:h-[32rem] overflow-hidden transition-opacity duration-300"
         style={{ opacity: headerOpacity }}
       >
-        <img
-          src="/images/ChatGPT Image 20 ene 2026, 05_10_48 p.m..png"
-          alt="Cartagena"
-          className="w-full h-full object-cover md:object-[center_30%]"
-          style={{ objectPosition: 'center 50%' }}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          src="/images/199001-909564581_small.mp4"
+          className="w-full h-full object-cover"
         />
         {/* Gradient overlay at bottom for transition */}
         <div
@@ -370,14 +375,41 @@ export default function Links() {
             </p>
           </div>
 
-          {/* Video */}
-          <div className="mb-6 flex justify-center">
-            <video
-              src="/images/AventuraVId.mp4"
-              controls
-              preload="metadata"
-              className="rounded-2xl shadow-lg max-h-[450px] w-auto"
-            />
+          {/* Video Carousel */}
+          <div className="mb-6 relative flex items-center justify-center gap-2">
+            <button
+              onClick={() => setCurrentVideoIndex((prev) => prev === 0 ? reviewVideos.length - 1 : prev - 1)}
+              className="flex-shrink-0 w-9 h-9 rounded-full bg-white/50 backdrop-blur-sm shadow-md flex items-center justify-center hover:bg-white/80 transition-all"
+            >
+              <ChevronLeft className="w-5 h-5 text-gray-700" />
+            </button>
+            <div className="flex-1 flex justify-center overflow-hidden">
+              <video
+                key={currentVideoIndex}
+                src={reviewVideos[currentVideoIndex]}
+                controls
+                preload="metadata"
+                className="rounded-2xl shadow-lg max-h-[450px] w-auto"
+              />
+            </div>
+            <button
+              onClick={() => setCurrentVideoIndex((prev) => prev === reviewVideos.length - 1 ? 0 : prev + 1)}
+              className="flex-shrink-0 w-9 h-9 rounded-full bg-white/50 backdrop-blur-sm shadow-md flex items-center justify-center hover:bg-white/80 transition-all"
+            >
+              <ChevronRight className="w-5 h-5 text-gray-700" />
+            </button>
+          </div>
+          {/* Video dots */}
+          <div className="flex justify-center gap-2 mb-4">
+            {reviewVideos.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrentVideoIndex(i)}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  i === currentVideoIndex ? 'w-6 bg-orange-500' : 'w-2 bg-gray-300'
+                }`}
+              />
+            ))}
           </div>
 
           {/* Google Reviews - Slider */}

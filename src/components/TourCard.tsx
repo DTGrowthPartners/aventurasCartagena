@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { MessageCircle, Clock, Check, ChevronRight } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { motion, useReducedMotion } from 'framer-motion';
 import {
   Dialog,
   DialogContent,
@@ -22,7 +23,7 @@ export interface Tour {
   priceCOP: number;
   includes: string[];
   includesEn: string[];
-  category: 'islands' | 'tierrabomba' | 'sanbernardo' | 'city' | 'sunset' | 'outside' | 'yachts' | 'nighttour' | 'sportboats' | 'santamarta';
+  category: 'islands' | 'tierrabomba' | 'sanbernardo' | 'city' | 'sunset' | 'outside' | 'yachts' | 'nighttour' | 'sportboats' | 'santamarta' | 'baru' | 'barubeach' | 'fullday';
   whatsappMessage: string;
 }
 
@@ -33,6 +34,7 @@ interface TourCardProps {
 export function TourCard({ tour }: TourCardProps) {
   const { language, t } = useLanguage();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const shouldReduceMotion = useReducedMotion();
 
   const name = language === 'es' ? tour.name : tour.nameEn;
   const description = language === 'es' ? tour.description : tour.descriptionEn;
@@ -54,8 +56,11 @@ export function TourCard({ tour }: TourCardProps) {
 
   return (
     <>
-      <div
-        className="group flex flex-col h-full bg-card rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 border border-border/50 cursor-pointer sm:cursor-default"
+      <motion.div
+        className="group flex flex-col h-full bg-card rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-shadow duration-300 border border-border/50 cursor-pointer sm:cursor-default"
+        whileHover={shouldReduceMotion ? {} : { y: -4, scale: 1.02 }}
+        whileTap={shouldReduceMotion ? {} : { scale: 0.98 }}
+        transition={{ type: 'spring', stiffness: 300, damping: 20 }}
         onClick={() => {
           // Only open modal on mobile (when clicking the card)
           if (window.innerWidth < 640) {
@@ -144,7 +149,7 @@ export function TourCard({ tour }: TourCardProps) {
             {t('tours.book')}
           </a>
         </div>
-      </div>
+      </motion.div>
 
       {/* Modal */}
       <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>

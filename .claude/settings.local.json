@@ -4,7 +4,8 @@
       "Bash(npm install:*)"
     ],
     "additionalDirectories": [
-      "C:\\Users\\Edgar\\OneDrive\\Documentos\\aventurasCartagena\\src\\assets\\Imagenes tour"
+      "C:\\Users\\Edgar\\OneDrive\\Documentos\\aventurasCartagena\\src\\assets\\Imagenes tour",
+      "c:\\Users\\Edgar\\OneDrive\\Documentos\\aventurasCartagena\\src\\assets\\Imagenes tour"
     ]
   }
 }
