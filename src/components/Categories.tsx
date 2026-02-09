@@ -10,7 +10,7 @@ const categories = [
     title: { es: 'Islas y Playas', en: 'Islands & Beaches' },
     desc: { es: 'Rosario, Barú, San Bernardo, Tierra Bomba', en: 'Rosario, Barú, San Bernardo, Tierra Bomba' },
     color: 'bg-ocean',
-    href: '#tours',
+    tabId: 'islas',
   },
   {
     id: 'nighttour',
@@ -18,7 +18,7 @@ const categories = [
     title: { es: 'Tour Nocturno', en: 'Night Tour' },
     desc: { es: 'Chiva y rumba', en: 'Chiva party bus' },
     color: 'bg-sunset',
-    href: '#tours',
+    tabId: 'tournocturno',
   },
   {
     id: 'sunsets',
@@ -26,7 +26,7 @@ const categories = [
     title: { es: 'Atardeceres', en: 'Sunsets' },
     desc: { es: 'Vistas mágicas', en: 'Magical views' },
     color: 'bg-orange-500',
-    href: '#tours',
+    tabId: 'atardeceres',
   },
   {
     id: 'santamarta',
@@ -34,7 +34,7 @@ const categories = [
     title: { es: 'Santa Marta', en: 'Santa Marta' },
     desc: { es: 'Ciudad colonial y Tayrona', en: 'Colonial city and Tayrona' },
     color: 'bg-purple-500',
-    href: '#tours',
+    tabId: 'cultura',
   },
 ];
 
@@ -71,9 +71,12 @@ export function Categories() {
           {categories.map((category, index) => {
             const Icon = category.icon;
             return (
-              <motion.a
+              <motion.button
                 key={category.id}
-                href={category.href}
+                onClick={() => {
+                  window.dispatchEvent(new CustomEvent('selectTourTab', { detail: category.tabId }));
+                  document.getElementById('tours')?.scrollIntoView({ behavior: 'smooth' });
+                }}
                 className="group relative flex flex-col items-center p-4 md:p-6 rounded-2xl bg-card shadow-card hover:shadow-card-hover transition-shadow duration-300 border border-border/50"
                 custom={index}
                 variants={cardVariants}
@@ -106,7 +109,7 @@ export function Categories() {
                 <div className="absolute bottom-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
                   <span className="text-primary text-lg">→</span>
                 </div>
-              </motion.a>
+              </motion.button>
             );
           })}
         </div>

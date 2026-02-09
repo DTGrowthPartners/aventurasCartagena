@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { TourCard } from '@/components/TourCard';
 import { toursData } from '@/data/tours';
@@ -84,6 +84,27 @@ export function ToursSection() {
   const tabsRef = useRef<HTMLDivElement>(null);
   const shouldReduceMotion = useReducedMotion();
 
+  // Listen for tab selection from Categories
+  useEffect(() => {
+    const handleSelectTab = (e: Event) => {
+      const tabId = (e as CustomEvent).detail;
+      if (activeSections.some((s) => s.id === tabId)) {
+        setActiveTab(tabId);
+        if (scrollContainerRef.current) {
+          scrollContainerRef.current.scrollTo({ left: 0 });
+        }
+        setTimeout(() => {
+          if (tabsRef.current) {
+            const tabEl = tabsRef.current.querySelector(`[data-tab="${tabId}"]`);
+            tabEl?.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+          }
+        }, 50);
+      }
+    };
+    window.addEventListener('selectTourTab', handleSelectTab);
+    return () => window.removeEventListener('selectTourTab', handleSelectTab);
+  }, []);
+
   const activeIndex = activeSections.findIndex((s) => s.id === activeTab);
   const activeSection = activeSections[activeIndex] || activeSections[0];
   const tours = toursData.filter((tour) =>
@@ -135,7 +156,7 @@ export function ToursSection() {
           <div className="relative mb-8">
             <div
               ref={tabsRef}
-              className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide snap-x snap-mandatory"
+              className="flex gap-1.5 overflow-x-auto pb-2 scrollbar-hide snap-x snap-mandatory justify-center"
               style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
             >
               {activeSections.map((section) => {
@@ -146,7 +167,7 @@ export function ToursSection() {
                     key={section.id}
                     data-tab={section.id}
                     onClick={() => setActiveTab(section.id)}
-                    className={`relative flex items-center gap-2 px-4 py-2.5 rounded-full text-sm font-medium whitespace-nowrap snap-start transition-colors duration-200 ${
+                    className={`relative flex items-center gap-1.5 px-3 py-2 rounded-full text-xs font-medium whitespace-nowrap snap-start transition-colors duration-200 ${
                       isActive
                         ? 'text-primary-foreground'
                         : 'bg-background text-muted-foreground hover:bg-muted border border-border/50'
@@ -160,7 +181,7 @@ export function ToursSection() {
                       />
                     )}
                     <span className="relative z-10 flex items-center gap-2">
-                      <Icon className="w-4 h-4" />
+                      <Icon className="w-3.5 h-3.5" />
                       {language === 'es' ? section.titleKey : section.titleKeyEn}
                     </span>
                   </button>
